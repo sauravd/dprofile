@@ -1,0 +1,90 @@
+{% extends "base.html" %}
+{% load static %}
+{% comment %} {% load render_table from django_tables2 %} {% endcomment %}
+<style>
+    body {
+        display: grid;
+        place-items: center;
+        height: 100vh;
+        margin: 0;
+    }
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      margin: auto;
+    }
+    
+    th, td {
+      padding: 8px;
+      text-align: left;
+      border-bottom: 1px solid #DDD;
+    }
+    
+    tr:hover {background-color: #D6EEEE;}
+
+    .center-div {
+        width: 50%;
+        margin: auto;
+        background-color: lightgray;
+        padding: 20px;
+        text-align: center;
+    }
+</style>
+
+{% block title %}
+Digital Palika Profile - Hatuwagadhi
+{% endblock title %}
+
+{% block content %}
+<h2 class="text-center mt-5"> व्यक्तिगत घटना विवरण</h2>
+
+<div class="container">
+    <div class="center-divs">
+      {% autoescape off %}
+        {{ fig11 }}
+        {% endautoescape %}
+    </div>
+</div>
+
+<div class="contianer">   
+        <table class="table table-success table-striped">
+            <thread>
+            <tr>
+                <th>क्र.सं.</th>
+                <th>जन्म</th>
+                <th>मृत्यु</th>
+                <th>विवाह</th>
+                <th>सम्बन्ध विच्छेद (जोडी) </th>
+                <th>बसाइँसराई आएको</th>
+                <th>बसाइँसराई गएको </th>
+            </tr>
+        </thread>
+        <tbody>
+            {% for item in queryset %}
+            <tr> 
+                <td>{{ item.sn }}</td>
+                <td>{{ item.birth }}</td>
+                <td>{{ item.death }}</td>
+                <td>{{ item.marriage }}</td>
+                <td>{{ item.divorce }}</td>
+                <td>{{ item.migration_incoming }}</td>
+                <td>{{ item.migration_outgoing }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+        </table>    
+</div>
+
+
+{% endblock content%}
+
+
+
+
+
+
+
+
+
+
+

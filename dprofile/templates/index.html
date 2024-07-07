@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Digital Palika Profile</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.min.js" integrity="sha512-L0Shl7nXXzIlBSUUPpxrokqq4ojqgZFQczTYlGjzONGTDAcLremjwaWv5A+EDLnxhQzY5xUZPWLOLqYRkY0Cbw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.29.2/feather.min.js" integrity="sha512-zMm7+ZQ8AZr1r3W8Z8lDATkH05QG5Gm2xc6MlsCdBz9l6oE8Y7IXByMgSm/rdRQrhuHt99HAYfMljBOEZ68q5A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <style>
+  .fakeimg {
+    height: 200px;
+    background: #aaa;
+  }
+  .dropdown-menu {
+    max-height: 400px;
+    overflow-y: auto;
+    width: 500px; /* Fixed width */
+  }
+  </style>
+</head>
+<body>
+
+<div class="p-5 bg-primary text-white text-center">
+  <h1>हतुवागढी गाउँपालिका, गाउँ कार्यपालिकाको कार्यालय</h1>
+  <p>कोशी प्रदेश, भोजपुर, नेपाल</p>
+  <h2>डिजिटल प्रोफाईल</h2>
+</div>
+
+
+<div class="d-grid gap-4 d-md-flex justify-content-center">
+    <div class="dropdown">
+      <button class="btn btn-secondary btn-lg dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="true">
+        घरधुरी तथ्याङ्क
+      </button>
+      <ul class="dropdown-menu ">
+        <li><a class="dropdown-item" href="#">व्यक्तिगत घटना विवरण</a></li>
+        <li><a class="dropdown-item" href="#">सिंचाई सुविधाको उपलब्धता</a></li>
+        <li><a class="dropdown-item" href="#">सामाजिक सुरक्षा कार्यक्रम विवरण </a></li>
+        <li><a class="dropdown-item" href="#">आधुनिक पशुपालन (फार्म) सम्बन्धी विवरण</a></li>
+        <li><a class="dropdown-item" href="#">सार्वजनिक पोखरी तथा माछापालन</a></li>
+
+      </ul>
+    </div>
+
+    <div class="btn-group">
+      <button class="btn btn-secondary btn-lg dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="true">
+        संस्थागत तथ्याङ्क
+      </button>
+      <ul class="dropdown-menu">
+        {% comment %} <li><a class="dropdown-item" href="{% url 'dprofile:personaleventdetails' %}">व्यक्तिगत घटना विवरण</a></li> {% endcomment %}
+        <li><a class="dropdown-item" href="{% url 'dprofile:animalhusbandryfirms' %}">आधुनिक पशुपालन (फार्म) सम्बन्धी विवरण</a></li>
+        <li><a class="dropdown-item" href="{% url 'dprofile:agrilivstkcooperative' %}">कृषि तथा पशु सम्बन्धी सहकारी संघ संस्थाहरुको विवरण</a></li>
+        <li><a class="dropdown-item" href="{% url 'dprofile:accesstoroadnetwork' %}">सडक सञ्जालमा पहुँच</a></li>
+        <li><a class="dropdown-item" href="#">सिंचाई सुविधाको उपलब्धता</a></li>
+        <li><a class="dropdown-item" href="#">सामाजिक सुरक्षा कार्यक्रम विवरण </a></li>        
+        <li><a class="dropdown-item" href="#">सार्वजनिक पोखरी तथा माछापालन</a></li>
+        <li><a class="dropdown-item" href="#">कृषि तथा पशु सेवासंग सम्बन्धित मानव संसाधन (संख्या)</a></li>
+        <li><a class="dropdown-item" href="#">कृषि तथा पशु सेवासंग सम्बन्धित सामुदायिक संस्था तथा समूहको विवरण (संख्या)</a></li>
+        <li><a class="dropdown-item" href="#">घट्ट, मिल तथा संकलन तथा प्रसोधन केन्द्र सम्बन्धी विवरण</a></li>
+        <li><a class="dropdown-item" href="#">भू–उपयोगको अवस्था</a></li>
+        <li><a class="dropdown-item" href="#">मुख्य चाड, पर्व तथा मेला जात्रा सम्बन्धी विवरण</a></li>
+        <li><a class="dropdown-item" href="#">स्थानीय तह भित्र रहेका सामुदायिक संस्था विवरण</a></li>
+        <li><a class="dropdown-item" href="#">स्थानीय तह भित्र रहेका आमा महिला समूह तथा परम्परागत समूहको विवरण</a></li>
+        <li><a class="dropdown-item" href="#">स्थानीय तह भित्र रहेका नागरिक सचेतना केन्द्र र टोल विकास संस्थाको विवरण</a></li>
+        <li><a class="dropdown-item" href="#">स्थानीय भित्र रहेका कृषक, उद्यमी तथा बचत समूहको विवरण</a></li>
+        <li><a class="dropdown-item" href="#">बाणिज्य वैंक, विकास वैक, वित्तीय संस्था, लघु वित्त तथा सहकारी संस्था सम्बन्धी विवरण</a></li>
+        <li><a class="dropdown-item" href="#">स्थानीय तह भित्र रहेका गैर सरकारी संस्था सम्बन्धी विवरण</a></li>        
+        <li><a class="dropdown-item" href="#">स्थानीय तह क्षेत्र भित्र रहेका होटेल, लज, रेष्टुरेण्ट, होमस्टेको विवरण</a></li>
+        <li><a class="dropdown-item" href="#">स्थानीय तह क्षेत्र भित्र रहेका प्रकृतिक स्रोत साधनको नक्शांकन</a></li>        
+        <li><a class="dropdown-item" href="#">भवन, वस्ती विकास तथा विपन्न वर्गका लागि आवास सम्बन्धी विवरण</a></li>
+        <li><a class="dropdown-item" href="#">वन तथा वातावरण सम्बन्धी विवरण</a></li>
+        <li><a class="dropdown-item" href="#">वन तथा जैविक विविधता</a></li>
+        <li><a class="dropdown-item" href="#">स्थानीय तह क्षेत्र भित्र रहेका सामुदायिक वनहरुको विवरण</a></li>
+        <li><a class="dropdown-item" href="#">वनको विवरण </a></li>
+        <li><a class="dropdown-item" href="#">वातावरण तथा स्वच्छता</a></li>
+        <li><a class="dropdown-item" href="#">ठोस फोहर व्यवस्थापन</a></li>
+        <li><a class="dropdown-item" href="#">वायु प्रदुषणका श्रोतहरु</a></li>
+        <li><a class="dropdown-item" href="#">प्रकोप ब्यवस्थापन सम्बन्धी विवरण</a></li>
+        <li><a class="dropdown-item" href="#">सुशासन (सेवा प्रवाहबाट सन्तुष्टी)</a></li>
+        <li><a class="dropdown-item" href="#">लैङ्गिक समानता तथा सामाजिक समावेसीकरण</a></li>
+        <li><a class="dropdown-item" href="#">स्वास्थ्य तथा पोषण सम्बन्धी विवरण</a></li>
+        <li><a class="dropdown-item" href="#">स्थानीय तह भित्र देखा परेका प्रमुख रोग तथा उपचारसम्बन्धी विवरण</a></li>
+        <li><a class="dropdown-item" href="#">गौरवका आयोजनाहरु</a></li>
+        <li><a class="dropdown-item" href="#">सडक मार्ग</a></li>
+        <li><a class="dropdown-item" href="#">पैदल मार्ग</a></li>
+        <li><a class="dropdown-item" href="#">पुल तथा पुलेसा </a></li>
+        <li><a class="dropdown-item" href="#">सरकारी भवन</a></li>
+        <li><a class="dropdown-item" href="#">विपदबाट मानवीय क्षती</a></li>
+        <li><a class="dropdown-item" href="#">विपदको किसिम अनुसार जोखिमको समय </a></li>
+        <li><a class="dropdown-item" href="#">विपदको असर विवरण</a></li>
+        <li><a class="dropdown-item" href="#">विपदबाट क्षति सार्वजनिक संरचना तथा पूर्वाधार (गत ३ बर्षको असरको आधारमा)</a></li>
+        <li><a class="dropdown-item" href="#">गाउँपालिका/नगरपालिकाका सरकारी कार्यालय तथा निकायहरु</a></li>
+      </ul>
+    </div>
+    <div class="btn-group">
+      <button class="btn btn-secondary btn-lg dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="true">
+        GIS मानचित्रमा तथ्याङ्क
+      </button>
+      <ul class="dropdown-menu">
+        <li><a class="dropdown-item" href="{% url 'dprofile:map'  %}">GIS मानचित्रमा</a></li>
+      </ul>
+    </div>
+  </div>
+
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-sm-4">
+
+    </div>
+    <div class="col-sm-8">
+
+    </div>
+  </div>
+</div>
+
+<div class="mt-5 p-4 bg-dark text-white text-center">
+  <p>&copy; हतुवागढी गाउँ कार्यपालिकाको कार्यालय </p>
+  <p>Design and Development by KCC</p>
+</div>
+
+</body>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</html>

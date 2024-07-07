@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+{% load static %}
+{% comment %} {% load render_table from django_tables2 %} {% endcomment %}
+<style>
+    body {
+        display: grid;
+        place-items: center;
+        height: 100vh;
+        margin: 0;
+    }
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      margin: auto;
+    }
+    
+    th, td {
+      padding: 8px;
+      text-align: left;
+      border-bottom: 1px solid #DDD;
+    }
+    
+    tr:hover {background-color: #D6EEEE;}
+
+    .center-div {
+        width: 50%;
+        margin: auto;
+        background-color: lightgray;
+        padding: 20px;
+        text-align: center;
+    }
+</style>
+
+{% block title %}
+Digital Palika Profile - Hatuwagadhi
+{% endblock title %}
+{% block content %}
+<h2 class="text-center mt-5">कृषि तथा पशु सम्बन्धी सहकारी संघ संस्थाहरुको विवरण</h2>
+
+ {% comment %} <div class="container">
+    <div class="center-divs">
+      {% autoescape off %}
+        {{ fig1 }}
+        {% endautoescape %}
+    </div>
+</div>  {% endcomment %}
+
+<div class="contianer">   
+        <table class="table table-success table-striped">
+            <thread>
+            <tr>
+                <th>क्र.सं.</th>
+                <th>मिति</th>
+                <th>सहकारी संस्थाहरुको नाम</th>
+                <th>दर्ता मिति</th>
+                <th>ठेगाना</th>
+                <th>सम्पर्क नम्बर</th>
+            </tr>
+        </thread>
+        <tbody>
+            {% for item in queryset %}
+            <tr> 
+                <td>{{ item.sn }}</td>
+                <td>{{ item.updated_date }}</td>
+                <td>{{ item.org_name }}</td>
+                <td>{{ item.registered_data }}</td>
+                <td>{{ item.org_address }}</td>
+                <td>{{ item.contact_number }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+        </table>    
+</div>
+
+
+{% endblock content%}
+
+
+
+
+

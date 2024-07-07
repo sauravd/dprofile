@@ -1,0 +1,94 @@
+{% extends "base.html" %}
+{% load static %}
+{% comment %} {% load render_table from django_tables2 %} {% endcomment %}
+<style>
+    body {
+        display: grid;
+        place-items: center;
+        height: 100vh;
+        margin: 0;
+    }
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      margin: auto;
+    }
+    
+    th, td {
+      padding: 8px;
+      text-align: left;
+      border-bottom: 1px solid #DDD;
+    }
+    
+    tr:hover {background-color: #D6EEEE;}
+
+    .center-div {
+        width: 50%;
+        margin: auto;
+        background-color: lightgray;
+        padding: 20px;
+        text-align: center;
+    }
+</style>
+
+{% block title %}
+Digital Palika Profile - Hatuwagadhi
+{% endblock title %}
+
+{% block content %}
+<h2 class="text-center mt-5">आधुनिक पशुपालन (फार्म) सम्बन्धी विवरण</h2>
+
+<div class="container">
+    <div class="center-divs">
+      {% autoescape off %}
+        {{ fig1 }}
+        {% endautoescape %}
+    </div>
+</div>
+
+<div class="contianer">   
+        <table class="table table-success table-striped">
+            <thread>
+            <tr>
+                <th>क्र.सं.</th>
+                <th>पशुपालन फर्म (गाई, भैसी,बाख्रा, बंगुर र कुखुरा) को नाम</th>
+                <th>फर्म रहेको ठेगाना (स्थान)</th>
+                <th>उत्पादित वस्तु</th>
+                <th>इकाई </th>
+                <th>परिमाण </th>
+                <th>प्रोपाईटरको नाम</th>
+                <th>महिला रोजगारी संख्या</th>
+                <th>पुरुष रोजगारी संख्या</th>
+            </tr>
+        </thread>
+        <tbody>
+            {% for item in queryset %}
+            <tr> 
+                <td>{{ item.sn }}</td>
+                <td>{{ item.name_of_animal_husbandry_firm }}</td>
+                <td>{{ item.address_of_firm }}</td>
+                <td>{{ item.products }}</td>
+                <td>{{ item.units_produced }}</td>
+                <td>{{ item.amount_produced }}</td>
+                <td>{{ item.name_of_proprietor }}</td>
+                <td>{{ item.employed_female }}</td>
+                <td>{{ item.employed_male }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+        </table>    
+</div>
+
+
+{% endblock content%}
+
+
+
+
+
+
+
+
+
+
+
