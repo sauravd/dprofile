@@ -3,13 +3,18 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>Household in Map</title>
-    {{map.header.render|safe}}
-  </head>
+    {% comment %} <title>Household in Map</title>
+    {{my_map.header.render|safe}}
+  </head> {% endcomment %}
   <body>
-    {{map.html.render|safe}}
-    <script>
-      {{map.script.render|safe}}
-    </script>   
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12 text-center">
+        {{my_map|safe}}
+      </div>
+    </div>
+    {% comment %} <script>
+      {{my_map.script.render|safe}}
+    </script>    {% endcomment %}
   </body>
 </html>

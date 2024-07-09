@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.views.generic import TemplateView, ListView
 from .models import HhSurvey
@@ -37,12 +37,12 @@ from .models import AccessToRoadnetwork, AgriLivstkCooperatives, \
 
 
 
-class HomePageView(TemplateView):
-    template_name = 'index.html'
+# class HomePageView(TemplateView):
+#     template_name = 'index.html'
 
-# def HomePageView(request):
-#     return render(request,'dprofile/index.html')
-
+def home(request):
+    context={}
+    return render(request,'dprofile/index.html', context)
 
 
 
@@ -138,30 +138,32 @@ def AnimalHusbandryFirmsView(request):
 
 
 
-class MapView(TemplateView):
-    template_name = 'map.html'
+def MapView(request):
+    # template_name = 'map.html'
 
     def get_context_data(self, **kwargs):
         figure = folium.Figure()
 
         # generate base data
         data = (np.random.normal(size=(100, 2)) * np.array([[1, 1]]) +
-                np.array([[48, 5]]))
-        
+                np.array([[48, 5]]))        
         
 
         # make a map
         m = folium.Map(
             location=[27.0149456, 87.1688135],
-            zoom_start=11,
+            zoom_start=10,
             tiles='OpenStreetMap',
             control_scale=True,
             height='90%',
-            max_bounds=True,
-            
+            max_bounds=True,          
             
         )
 
+        # folium.TileLayer("OpenStreetMap").add_to(m)
+        # folium.TileLayer(show=False).add_to(m)
+        # folium.LayerControl().add_to(m)
+        
         url = 'dprofile/static/hh_survey_4 July_2024.json'
         gdf = geopandas.read_file("dprofile/static/hh_survey_4 July_2024.json")
         gdf.head()
@@ -188,7 +190,7 @@ class MapView(TemplateView):
                                    smooth_factor=10,
                                    ).add_to(m)
 
-        m.add_to(figure)
+        
 
         householdsearch = Search(
             layer=household,
@@ -211,13 +213,18 @@ class MapView(TemplateView):
             ).add_to(m)
 
         TagFilterButton(categories).add_to(m)
-
+        folium.LayerControl().add_to(m)
         # fetch the objects from database and make markers for them
         # for house in HhSurvey.objects.all():
         #     make_markers_and_add_to_map(m, house)
 
         # render and send to template
-        figure.render()
-        return {"map": figure}
+        # m.add_to(figure)
+        # figure.render()
+        m=m._repr_html_()
+        context = {"my_map":m}
+        return render(request, 'dprofile/map.html', context)
+        # return {"map": figure}
+        
 
-        folium.LayerControl().add_to(m)
+        
